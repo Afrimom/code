@@ -4,7 +4,7 @@
   "description": "NOXI Hapi API.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "author": "Munashe",
   "license": "ISC",
