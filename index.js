@@ -15,8 +15,11 @@ mongoose.connect('mongodb://Afrimom:fint263mom@ds223609.mlab.com:23609/afrimom',
 
 //Create the server
 const server = new Hapi.Server();
-server.connection({host: 'localhost', port: 7777});
+/*For Heroku*/
+//server.connection({host: '0.0.0.0', port: +process.env.PORT});
 
+/*For Hosting*/
+server.connection({host: '178.128.182.212', port: 8080});
 //Register all plugins
 server.register(plugins, (err) => {
     if (err) {
@@ -47,16 +50,6 @@ server.register(plugins, (err) => {
         path: '/*',
         handler: (request, reply) => {
             return reply.view('index');
-        }
-    });
-
-    server.route({
-        method: 'GET',
-        path: '/{files*}',
-        handler: {
-           directory: {
-            path: __dirname
-           }
         }
     });
 
